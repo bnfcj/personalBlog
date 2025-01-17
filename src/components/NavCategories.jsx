@@ -10,23 +10,20 @@ function NavCategories({ categories }) {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <div className='basis-1/3'>
+    <div className='basis-1/3  z-10'>
       {/* Hamburger / Close Icon */}
-      <label
-        htmlFor='menuToggle'
-        className='block sm:hidden  cursor-pointer'
-        onClick={toggleMenu}
-      >
-        {/* Hamburger Icon */}
-        <Bars3Icon
-          className={`h-6 w-6  text-black ${isMenuOpen ? 'hidden' : 'block'}`}
-        />
 
-        {/* Close Icon */}
-        <XMarkIcon
-          className={`h-6 w-6 text-black ${isMenuOpen ? 'block' : 'hidden'}`}
-        />
-      </label>
+      <button
+        onClick={toggleMenu}
+        aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+        className='sm:hidden'
+      >
+        {isMenuOpen ? (
+          <XMarkIcon className='h-6 w-6 text-black' />
+        ) : (
+          <Bars3Icon className='h-6 w-6 text-black' />
+        )}
+      </button>
 
       {/* Navigation Menu */}
       <ul

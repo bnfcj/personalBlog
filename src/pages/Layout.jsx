@@ -1,6 +1,7 @@
 import NavCategories from '../components/NavCategories';
 import { Outlet } from 'react-router-dom';
-import { MagnifyingGlassIcon } from '@heroicons/react/16/solid';
+import SearchBar from '../components/SearchBar';
+import MusicBrand from '../components/MusicBrand';
 const categories = [
   {
     id: 1,
@@ -42,18 +43,11 @@ const categories = [
 
 function Layout() {
   return (
-    <div className='min-h-screen bg-neutral-50'>
-      <nav className='flex flex-row p-12 items-center relative justify-center'>
+    <div className='min-h-screen bg-gray-200'>
+      <nav className='flex flex-row py-10 px-20 items-center justify-center relative '>
         <NavCategories categories={categories} />
-        <a
-          className='text-xl basis-1/3 text-center'
-          href='#'
-        >
-          Music Blog
-        </a>
-        <div className='basis-1/3'>
-          <MagnifyingGlassIcon className='h-6 w-6 ml-auto flex-1 text-black' />
-        </div>
+        <MusicBrand />
+        <SearchBar />
       </nav>
       {<Outlet />}
     </div>
