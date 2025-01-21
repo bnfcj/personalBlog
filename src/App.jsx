@@ -1,7 +1,8 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router";
+import { Route, Routes } from "react-router";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import BlogPage from "./components/BlogPage/BlogPage";
+import CreateBlogPage from "./components/CreateBlogPage/CreateBlogPage";
 const mockPosts = [
   {
     year: "2025",
@@ -22,17 +23,18 @@ const mockPosts = [
 ];
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route
-            path="/:year/:month/:day/:slug"
-            element={<BlogPage mockPosts={mockPosts} />}
-          />
-        </Route>
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route
+          path=":year/:month/:day/:slug"
+          element={<BlogPage mockPosts={mockPosts} />}
+        />
+      </Route>
+      <Route path="/admin" element={<Layout />}>
+        <Route path="create-blog-page" element={<CreateBlogPage />} />
+      </Route>
+    </Routes>
   );
 }
 
