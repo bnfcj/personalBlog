@@ -1,6 +1,6 @@
 import { useCurrentEditor } from "@tiptap/react";
 
-function Bold() {
+function Bold({ activeStyle, inactiveStyle }) {
   const { editor } = useCurrentEditor();
 
   if (!editor) {
@@ -10,9 +10,7 @@ function Bold() {
     <button
       onClick={() => editor.chain().focus().toggleBold().run()}
       disabled={!editor.can().chain().focus().toggleBold().run()}
-      className={`${
-        editor.isActive("bold") ? "text-black font-bold" : "text-gray-500"
-      }`}
+      className={`${editor.isActive("bold") ? activeStyle : inactiveStyle}`}
     >
       Bold
     </button>

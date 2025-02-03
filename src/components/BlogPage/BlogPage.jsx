@@ -27,7 +27,7 @@ function BlogPage({ mockPosts }) {
     <>
       {post ? (
         <div>
-          <h1>{post.title}</h1>
+          <h1 className="text-2xl">{post.title}</h1>
           <p>{post.content}</p>
           <p>
             <i>

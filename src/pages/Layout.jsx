@@ -44,7 +44,7 @@ function Layout() {
   return (
     <>
       <Navigation categories={categories} />
-      <div className="min-h-screen bg-gray-200">{<Outlet />}</div>
+      <div className="min-h-screen bg-white px-5 box-border">{<Outlet />}</div>
     </>
   );
 }

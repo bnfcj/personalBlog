@@ -1,9 +1,11 @@
 import StarterKit from "@tiptap/starter-kit";
 import { Color } from "@tiptap/extension-color";
 import ListItem from "@tiptap/extension-list-item";
+import Placeholder from "@tiptap/extension-placeholder";
 import TextStyle from "@tiptap/extension-text-style";
 import Image from "@tiptap/extension-image";
 import { EditorProvider } from "@tiptap/react";
+import "./CustomStyles/customStyles.css";
 import MenuBar from "./Menubar";
 import CustomImage from "./CustomExtensions/CustomImage";
 const extensions = [
@@ -14,28 +16,36 @@ const extensions = [
   StarterKit.configure({
     bulletList: {
       keepMarks: true,
-      keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
+      keepAttributes: false,
     },
     orderedList: {
       keepMarks: true,
-      keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
+      keepAttributes: false,
     },
     horizontalRule: {
       HTMLAttributes: {
-        class: " border-t-black",
+        class: " border-t-black ",
       },
     },
+    blockquote: {
+      HTMLAttributes: {
+        class: "border-l-4 pl-4 border-gray-300",
+      },
+    },
+  }),
+
+  Placeholder.configure({
+    placeholder: "Type something",
+
+    // emptyEditorClass: `text-gray-400 before:content-[attr(data-placeholder)]`,
   }),
 ];
 const editorProps = {
   attributes: {
-    class:
-      "prose prose-sm sm:prose-base lg:prose-lg xl:prose-2xl m-5 focus:outline-none",
+    class: "prose max-w-full outline-none py-10 static",
+    style: "position: static ",
   },
 };
-const content = `
-
-`;
 
 const TipTap = () => {
   return (
@@ -43,7 +53,6 @@ const TipTap = () => {
       slotBefore={<MenuBar />}
       extensions={extensions}
       editorProps={editorProps}
-      content={content}
     />
   );
 };
